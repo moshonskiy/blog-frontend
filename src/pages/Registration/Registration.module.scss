@@ -1,0 +1,28 @@
+.root {
+    width: auto;
+    max-width: 400px;
+    padding: 50px;
+    border: 1px solid var(--gray100);
+    margin: 50px auto;
+}
+
+.field {
+    margin-bottom: 20px;
+}
+
+.title {
+    text-align: center;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.error {
+    color: var(--red);
+    text-align: center;
+    margin-top: 12px;
+}
