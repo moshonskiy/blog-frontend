@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks/hooks';
 import { getAllPostsByTag, selectPosts } from '../../redux/slices/postSlice';
 
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+
 import Post from '../../components/Post';
 import { Grid } from '@mui/material';
 
@@ -12,6 +15,9 @@ const Tags = () => {
     const { id } = useParams();
     const dispatch = useAppDispatch();
     const { items } = useAppSelector(selectPosts);
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
 
     useEffect(() => {
         if (id) {
@@ -24,7 +30,7 @@ const Tags = () => {
             <div className={s.title}>#{id}</div>
             <Grid container spacing={2}>
                 {items.map(({ _id, title, imageUrl, text, user, createdAt, viewsCount, commentsCount, tags }) => (
-                    <Grid item xs={4} key={_id}>
+                    <Grid item xs={matches ? 4 : 12} key={_id}>
                         <Post
                             key={_id}
                             _id={_id}
